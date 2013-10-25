@@ -1,0 +1,49 @@
+/**
+* @author
+* @date
+* Define the different display property
+**/
+
+
+/* Display Block */
+.db {
+	display: block;
+}
+
+/* Display Inline-Block */
+.dib {
+	display: inline-block;
+	/* Hack IE7 */
+	*display: inline;
+	zoom: 1;
+}
+
+/* Display Inline */
+.di {
+	display: inline;
+}
+
+/* Display table */
+.dt {
+	display: table;
+}
+
+/* Display inline-table */
+.dit {
+	display: inline-table;
+}
+
+/* Display table Cell */
+.dtc {
+	display: table-cell;
+}
+
+/* Display None */
+.dn {
+	display: none;
+}
+
+/* overflow hidden */
+.oh {
+	overflow: hidden;
+}

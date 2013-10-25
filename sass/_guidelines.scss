@@ -1,0 +1,302 @@
+/**
+*
+* @Moudondi Godfried
+* @01/08/2013
+* Different important guidelines for efficient and clean css/sass practice
+* Sources: https://github.com/csswizardry/CSS-Guidelines#naming-conventions
+*
+**/
+
+
+/* Section titles */
+
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+
+/* 
+ * The $ prefixing the name of the section allows us to run a find ([Cmd|Ctrl]+F) 
+ * for $[SECTION-NAME] and limit our search scope to section titles only.
+ *
+ * Only really usefull when using single css file since sass allow multiple file
+ * a well named and commented file will be enough
+ *
+ */
+
+
+
+/* Source order */ 
+
+/* 
+ * Always order css files so you benefit inheritance; for example files with reset, normalize
+ * then plugins to end with your custom css files; this will allow easy scalability and
+ * overloading with your own files
+ *
+ */
+
+
+/* Anatomy of rulesets */
+
+/* 
+ * Here is the preferred anatomy of rules, note that this is a guide not an order
+ *
+   [selector]{
+  	    [property]:[value];
+ 	    [<- Declaration ->]
+ 	}
+ 
+ *  
+ * Use properties order by relevance or alphabetical (preferred)
+ * Indent vendor prefix so they can be read easy (see below)
+ * 
+ * .widget{
+	    border:1px solid #BADA55;
+	    background-color:#C0FFEE;
+	    -webkit-border-radius:4px;
+	       -moz-border-radius:4px;
+	            border-radius:4px;
+	    padding:10px;        
+	}
+ *
+ * Indent our rulesets to mirror the DOM (see below)
+ * 
+   .page-header .nav {} 
+   .page-header .nav a {} 
+   .page-header .nav a .colored-span {}
+ *   
+ * Instead of 
+ *
+ 	.page-header .nav {} 
+    .page-header .nav a .colored-span {}
+    .page-header .nav a {} 
+ * 
+ * For single css file
+
+   .widget {}
+     .widget-header{}
+
+ * So we let other know that .widget-header must be a cild of .widget       
+ */
+
+
+/* Naming conventions */
+
+/* 
+ * Name classes as below:
+
+  .foo-bar{}
+ * 
+ * instead of
+
+   .foo_bar {}
+   .foo__bar {}
+   .fooBar {}
+ *
+ * The BEM syntax analogy (not used yet nor know)
+ 
+ 	.person{}
+	.person--woman{}
+    .person__hand{}
+    .person__hand--left{}
+    .person__hand--right{}
+ *
+ */
+
+
+/* JS hooks */
+
+/* 
+ * !!! ALWAYS SEPARATE JS RELATED CLASS FROM CSS CLASSES, ALWAYS !!!
+ * 
+ * This will allow presentation modificaition without any worry on js and vis-versa
+ * Prefix your js classes with js- (as shown below)
+
+ 	<th class="is-sortable  js-is-sortable"></th>
+ *
+ */
+
+
+/* Comments */
+
+/* Comments as see comments use here */
+
+/* 
+ * Comments can be use to let others dev how elements are meant to be use,
+ * for example wich pat oh html page a class can be preferably use. */
+
+  	/*html*/.product-page{}
+
+  	/*ol*/.breadcrumb{}
+	/*p*/.intro{}
+	/*ul*/.image-thumbs{}
+
+
+/* Building new components */
+
+/* 
+ * Write markup before you write css;
+ * [quote] This means you can visually see which CSS properties are naturally
+ * inherited and thus avoid reapplying redundant styles.
+ */
+
+
+/* OOCSS */
+
+/* 
+ * Principles
+ * 
+ * - [quote] OOCSS teaches us to abstract the shared styles out into a base object
+ * and then extend this information with more specific classes to add the unique treatment(s).
+ * - Find repeated design, regroup it in a class then create classes that extends them
+ * to meet our needs for parcular cases.
+ * 
+ *
+ */
+
+
+ /* Layout */
+
+ /* 
+  * Demands more investigation
+  */
+
+
+/* Sizing UIs */ 
+
+/* 
+ * For responsive layout font-size should set with percentage
+ * [quote] Font sizes I set in rems with a pixel fallback.
+ * This gives the accessibility benefits of ems with the confidence of pixels. 
+ * [copied] Mixin for font-size set in rem with fallback for in pixel;
+
+ 	@mixin font-size($font-size){
+    	font-size:$font-size +px;
+    	font-size:$font-size / $base-font-size +rem;
+ 	}
+
+ *
+ * [quote] only use pixels for items whose dimensions were defined before the came into the site.
+ *
+ * [to_read] http://csswizardry.com/2012/02/pragmatic-practical-font-sizing-in-css/
+ *
+ */
+
+
+/* Shorthand */
+
+/* 
+ * Avoid shorhand if they are not necessary. This prevent useless calculation for the browser.
+ * If you are only to define padding on right and left for example
+
+   .class {
+		padding: 0 5px;
+   }
+ * should be replaced with
+	.class {
+		padding-right: 5px;
+		padding-left: 5px;
+   }
+ * wich avoid these useless rules
+ 	.class {
+		padding-right: 5px;
+		padding-left: 5px;
+		// these rules are then avoided
+		padding-top: 0;
+		padding-bottom: 0;
+   }  
+ */
+
+
+/* IDs */
+
+/* 
+ * !!! NEVER EVER USE ID's on your style sheet !!!
+ *
+ * Unless is it something inavoidable (js who knows), avoid it.
+ * It takes 255 classes to overcome one #id, and this strong specificity makes reusability
+ * difficult since it prevents flexibility.
+ *
+ */
+
+
+
+/* Selectors */
+
+/* 
+ * - Make them short (beautiful abd especially faster for browser).
+ * - Make them comprehensible.
+ * - Make them independant from where they can be in the markup 
+ * - Over-qualified selectors: avoid them; prefer shorter and have an eye on markup
+ * before you cretae them it will allow you to have short one and independance from 
+ * markup.
+ *	
+  .promo {} instead of div.promo{} 
+  .nav a{} instead of ul.nav li a{} since .nav is supposed to be a nav and li are
+  in the ul. This is most of the time the intended behavior.
+
+ * In some case you could use for particular case, there could always be exception,
+ * these rules and rules can be exceeded.  
+   
+   p.error {
+		color: red;
+   }
+
+   p.validated {
+		color: green;
+   }
+ *  
+ * Avoid *{} as mush you can
+ * 
+ */ 
+
+
+/* CSS selector intent */
+
+/* 
+ * [quote] Write selectors that target what you want, not what happens to be there already.
+ * You should target what you want (much independant from markup element) and not what you
+ * find in the markup. (example below)
+
+ 	ul.nav li a h1 {} depends on markup, but not less as .nav .link h1 {}
+ *
+ * !important, avoid this as much as you can even if is it the easiest solution to your trouble.
+ * 	
+ */
+
+
+/* Magic numbers and absolutes */
+
+/* 
+ * - Avoid positioning with px and use percentage instead; pixel are not good 
+ * for flexibility especially for menu dropdown (example).
+ *
+ */
+
+
+/* Conditional stylesheets */
+
+/* 
+ * Except for rare trouble cases you won't need these conditional stylesheets for IE.
+ *
+ */ 
+
+
+/* Debugging */ 
+
+/* 
+ * Before you ever add some code, try to remove code instead so you can isolate the portion
+ * affected (then like in The Walking Dead YOU CAN IT OFF!!! DAMN!!).
+ * Be patient and if necessary skip one problem to come back on it again, don't spend a
+ * whole day for one problem.
+ *
+ */
+
+
+/* Preprocessors */
+
+/* 
+ * Avoid too much nested rules (not more than 3).
+ */ 
+
+
+/* Vertical rhythm */ 

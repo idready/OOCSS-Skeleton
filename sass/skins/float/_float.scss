@@ -1,0 +1,36 @@
+/**
+* @author
+* @date
+* Define the different float property
+**/
+
+/* Clearfix properties for after and before float */
+.clearfix:before, 
+.clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1; /* Hack IE7 */
+}
+
+
+/* Float Left */
+.fl {
+	float: left;
+}
+
+/* Float Right */
+.fr {
+	float: right;
+}
+
+/* Float None */
+.fn {
+	float: none;
+}

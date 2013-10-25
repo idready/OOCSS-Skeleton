@@ -1,0 +1,96 @@
+/**
+* @author
+* @date
+* Define the different text property
+**/
+
+/* ##  FONT WEIGHT ## */
+/* Font Weight Normal */
+.fwn {
+	font-weight: normal;
+}
+
+/* Font Weight Bold */
+.fwb {
+	font-weight: bold;
+}
+
+/* ## TEXT DECORATION ## */
+/* Text Decoration Underline */
+.tdu {
+	text-decoration: underline;
+}
+
+/* Hover text decoration underline */
+.htdu:hover {
+	text-decoration: underline;
+}
+
+/* Text Decoration None */
+.tdn {
+	text-decoration: none;
+}
+
+/* Text Decoration Line Through */
+.tdlt {
+	text-decoration: line-through;
+}
+
+/* ## TEXT INDENT ## */
+
+/* Property */
+.ti {
+	text-indent: -999px;
+}
+
+/* ## TEXT ALIGN ## */
+
+/* Text Align Left */
+.tal {
+	text-align: left;
+}
+
+/* Text Align Right */
+.tar {
+	text-align: right;
+}
+
+/* Text Align Center */
+.tac {
+	text-align: center;
+}
+
+/* Text Align Justify */
+.taj {
+	text-align: justify;
+}
+
+
+/* ## LINE HEIGHT ## */
+
+.ln-17 {
+	line-height: 17px;
+}
+
+.ln-28 {
+	line-height: 28px;
+}
+
+.ln-1 {
+	line-height: 1em;
+}
+
+.ln-1-7 {
+	line-height: 1.7em;
+}
+
+.ln-2 {
+	line-height: 2em;
+}
+
+/* ## FONT STYLE ## */
+
+/* italic */
+.fsi {
+	font-style: italic;
+}
