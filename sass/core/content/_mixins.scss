@@ -75,6 +75,7 @@
       @media screen and (min-width: ($bpoint / $font-base) * 1em) {
           @content;
       }
+    // apply only max conditionnal breakpoint
     } @else if $caseMax != 0 {
 
       @media screen and (max-width: ($bpoint / $font-base) * 1em) {
@@ -83,10 +84,6 @@
     } @else {
       // @TODO: get min and max through a loop and add them
       @each $widthVal in $caseMinMax {
-
-        // @media screen and (min-width: ( ((#{$widthVal})*1) / $font-base) * 1em) {
-        //   @content;
-        // }
       }
 
     }
