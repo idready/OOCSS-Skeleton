@@ -10,6 +10,14 @@
 
 /* ## INPUT TEXT ## */
 
+// Avoid border radius and weird apparearence on Safari (OSX)
+input[type='text'],
+input[type='submit'] {
+    @include appearance(none);
+    @include border-radius(0);
+    outline: none;
+}
+
 /* ## INPUT SUBMIT ## */
 
 /* ## TEXTAREA ## */

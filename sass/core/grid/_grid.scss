@@ -5,6 +5,165 @@
 **/
 
 
+/* ==========================================================================
+    Avoid troubles
+========================================================================== */
+
+/**
+ * apply a natural box layout model to all elements |
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * ONLY for IE8 and up browser support
+ */
+*,*:after,*:before {
+    @include box-sizing(border-box);
+}
+
+
+/* ==========================================================================
+    Grid system (Two Level)
+    Credit to @trevor_davis | http://davist11.github.io/nested-responsive-grid/
+========================================================================== */
+
+/*
+ * NB: When making css for columns, never ever define margin, padding or container width.
+ */
+
+/*** Mixins for grid ***/
+
+@mixin cols($num) {
+    width: ($one_col * $num) + ($gutter * ($num - 1));
+}
+
+@mixin sub_cols($num_child, $num_parent) {
+    $parent_size: ($one_col * $num_parent) + ($gutter * ($num_parent - 1));
+    $child_size: ($one_col * $num_child) + ($gutter * ($num_child - 1));
+    margin-left: ($gutter / $parent_size) * 100%;
+    width: ($child_size / $parent_size) * 100%;
+}
+
+
+/*** 12 Columns Grid ***/
+
+$cols: 12;
+$gutter: 1.5%;
+$one_col: (100% - ($gutter * ($cols - 1))) / $cols;
+
+/* @group grid */
+.container12 {
+
+    .grid-row {
+        #{enumerate('.grid-col', 1, $cols, '')} {
+            float: left;
+            margin-left: $gutter;
+        }
+
+        @for $i from 1 through $cols {
+            .grid-col#{$i} {
+                @include cols($i);
+
+                min-height: 150px;
+                margin-bottom: $gutter;
+
+                @for $j from 1 through ($i - 1) {
+                    .grid-col#{$j} {
+                        @include sub_cols($j, $i);
+                    }
+                }
+            }
+        }
+    }
+
+}
+/* @end of 12 Columns Grid*/
+
+
+
+/*** 16 Columns Grid ***/
+
+$cols: 16;
+$gutter: 1.5%;
+$one_col: (100% - ($gutter * ($cols - 1))) / $cols;
+
+
+/* @group grid */
+.container16 {
+
+    .grid-row {
+        #{enumerate('.grid-col', 1, $cols, '')} {
+            float: left;
+            margin-left: $gutter;
+        }
+
+        @for $i from 1 through $cols {
+            .grid-col#{$i} {
+                @include cols($i);
+
+                @for $j from 1 through ($i - 1) {
+                    .grid-col#{$j} {
+                        @include sub_cols($j, $i);
+                    }
+                }
+            }
+        }
+    }
+
+}
+/* @end of 16 Columns Grid*/
+
+/** common grid properties **/
+
+/* add you custom container grid here */
+.container12,
+.container16 {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+/* add you custom container grid here */
+.container12 .grid-row,
+.container16 .grid-row {
+
+    [class*="grid-col"] {
+
+        display: block;
+        margin-bottom: $gutter;
+        min-height: 1px;
+
+        &:first-child { margin-left: 0; }
+
+        &.alpha { margin-left: 0; }
+        &.omega { margin-right: 0; }
+
+    }
+
+}
+
+.grid-row:before, .grid-row:after {
+    content: '';
+    display: table;
+}
+
+.grid-row:after {
+    clear: both;
+}
+
+/* IE7 */
+.lte7 .grid-row {
+    height: 1%;
+}
+
+/* ==========================================================================
+    Media Queries
+========================================================================== */
+
+
+/* Convert from px to em */
+/* Change these accordingly and /or add other breakpoints */
+
+
+
+
 * {
 	margin: 0;
 	padding: 0;
@@ -61,4 +220,5 @@ body {
 }
 
 .wrap {
+    // add max-width here to restreint container eg. 1260px
 }

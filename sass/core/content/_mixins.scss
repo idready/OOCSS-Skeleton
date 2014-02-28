@@ -1,0 +1,319 @@
+/**
+* @author
+* @date
+* Define the global mixins and functions
+**/
+
+
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+
+/** REM FONT SIZE WITH PX FALLBACK **/
+
+/** Use of rem with pixel fallback **/
+@mixin font-size($font-size){
+  font-size:$font-size +px;
+  font-size:$font-size / $base-font-size +rem;
+}
+
+/** Source : http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ **/
+/** Rem with pixels fallback  **/
+
+@function calculateRem($size) {
+  $remSize: $size / $font-base; /* 16px is just a prefered value and can be changed */
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size * 1px;
+  font-size: calculateRem($size);
+}
+
+/** MEDIA QUERIES MIXINS **/
+/** Used for default breakpoint and more; breakpoint are converted to em too **/
+
+@mixin mQueries ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: 0, ($minValue:0, $maxValue: 0)) {
+
+  // Dealing with default breakpoints
+  @if $default == true {
+
+    @if $bpoint == mobile {
+
+      @media screen and (max-width: (($mobile-res / $font-base) * 1em) {
+        @content;
+      }
+    }
+
+    @if $bpoint == tablet {
+
+      @media screen and (max-width: ($tablet-res / $font-base) * 1em) and  (min-width: ($mobile-res + 1 / $font-base) * 1em) {
+        @content;
+      }
+    }
+
+    @if $bpoint == desktop {
+
+      @media screen and (max-width: ($desktop-res / $font-base) * 1em) and  (min-width: ($tablet-res + 1 / $font-base) * 1em) {
+        @content;
+      }
+    }
+
+    @if $bpoint == large-desktop {
+
+      @media screen and (min-width: ($desktop-res + 1 / $font-base) * 1em) {
+        @content;
+      }
+    }
+
+  } @else if $default == false {
+
+    // apply only min conditionnal breakpoint
+    @if $caseMin != 0 {
+
+      @media screen and (min-width: ($bpoint / $font-base) * 1em) {
+          @content;
+      }
+    } @else if $caseMax != 0 {
+
+      @media screen and (max-width: ($bpoint / $font-base) * 1em) {
+          @content;
+      }
+    }
+    // @TODO: get min and max through a loop and add them
+
+  }
+
+
+}
+
+/** TRIANGLE **/
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+
+/*
+* @include triangle within a pseudo element and add positioning properties (ie. top, left)
+* $direction: up, down, left, right
+*/
+@mixin triangle($direction, $size: 6px, $color: #222){
+
+  content: '';
+  display: block;
+  position: absolute;
+  height: 0; width: 0;
+
+  @if ($direction == 'up'){
+
+    border-bottom: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+
+  @else if ($direction == 'down'){
+
+    border-top: $size solid $color;
+    border-left: 1/2*$size solid transparent;
+    border-right: 1/2*$size solid transparent;
+  }
+
+  @else if ($direction == 'left'){
+
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-right: $size solid $color;
+  }
+
+  @else if ($direction == 'right'){
+
+    border-top: 1/2*$size solid transparent;
+    border-bottom: 1/2*$size solid transparent;
+    border-left: $size solid $color;
+  }
+
+}
+
+
+/** VERTICAL ALIGN **/
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+/** Vertically center an element wihtout knowing itsdimensions **/
+
+@mixin ghostVerticalAlign(){
+
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; width: .1px;
+  }
+}
+
+/** USAGE :
+
+Excerpt from http://css-tricks.com/centering-in-the-unknown/
+
+// This parent can be any width and height
+
+.block {
+  text-align: center;
+}
+
+// The ghost, nudged to maintain perfect centering
+
+.block:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; / Adjusts for spacing /
+}
+
+/ The element to be centered, can also be of any width and height
+
+.centered {
+  display: inline-block;
+  vertical-align: middle;
+  width: 300px;
+}
+
+**/
+
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+/** Sprites resize mixin; to read further https://gist.github.com/darren131/3410875 **/
+
+
+/** RESIZE SPRITE **/
+
+@mixin resize-sprite($map, $sprite, $percent) {
+
+  $spritePath:    sprite-path($map);
+  $spriteWidth:   image-width($spritePath);
+  $spriteHeight:  image-height($spritePath);
+  $width: image-width(sprite-file($map, $sprite));
+  $height: image-height(sprite-file($map, $sprite));
+
+  @include background-size(ceil($spriteWidth * ($percent/100)) ceil($spriteHeight * ($percent/100)));
+  width: ceil($width*($percent/100));
+  height: ceil($height*($percent/100));
+  background-position: 0 floor(nth(sprite-position($map, $sprite), 2)  * ($percent/100) );
+}
+
+/** Source : http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ **/
+/** SVG Background Image with image fallback; it also takes on retina image display  **/
+/*
+ *  You will need files named as below
+ *  pattern.svg
+ *  pattern.png
+ *  pattern@2x.png
+ */
+
+
+/** SVG BACKGROUND SIZE  WITH FALLBACK **/
+
+$image-path: '../img' !default;
+$fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+
+@mixin background-image($name, $size:false, $fallback-extension){
+
+    background-image: url(#{$image-path}/#{$name}.svg);
+
+    @if($size){
+        background-size: $size;
+    }
+    // This class depends on Modernizr being used or not
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+/** Gracefully truncate any text and avoid overlow, default is ellipsis **/
+
+@mixin truncateText($overflow: ellipsis){
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}
+
+/*------------------------------------*\
+    $PICTO & $SPRITES
+\*------------------------------------*/
+
+@mixin commonButtonsProp () {
+
+    cursor: pointer;
+    display: inline-block;
+    *display: inline; /* Hack IE7 */
+    zoom: 1;
+}
+
+
+/*------------------------------------*\
+    $USEFUL CLASSES
+\*------------------------------------*/
+
+/*
+ * IE9+
+ *
+ * usage : @extend %vertical-align;
+ * This is used to avoid css rendering of the ruleset on css when extending;
+ * Source: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+ *
+ */
+
+%vertical-align {
+  position: relative;
+  top: 50%;
+  @include transform (-50%);
+}
+
+/** Source : http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ **/
+/** Visually hide an element but yet make it accessible for readers for exemple  **/
+
+%visuallyhidden {
+
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip: rect(0, 0, 0, 0);
+  position: absolute;
+}
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+/** Display Currency dependy on country (parent class); you can add up your own **/
+
+%currency {
+
+  position: relative;
+
+  &:before {
+
+    content: '$';
+    position: relative;
+    left: 0;
+  }
+}
+
+.USD %currency:before { content: '$'; }
+.EUR %currency:before { content: '\20AC'; } // must escape the html entities for each currency symbol
+.ILS %currency:before { content: '\20AA'; }
+.GBP %currency:before { content: '\00A3'; }
+
+/** USAGE :
+
+.USD .price {
+    @extend %currency;
+}
+
+**/
