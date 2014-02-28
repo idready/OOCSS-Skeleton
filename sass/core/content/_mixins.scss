@@ -34,35 +34,35 @@
 /** MEDIA QUERIES MIXINS **/
 /** Used for default breakpoint and more; breakpoint are converted to em too **/
 
-@mixin mQueries ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: 0, ($minValue:0, $maxValue: 0)) {
+@mixin mQueries ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: ($minValue, $maxValue)) {
 
   // Dealing with default breakpoints
   @if $default == true {
 
     @if $bpoint == mobile {
 
-      @media screen and (max-width: (($mobile-res / $font-base) * 1em) {
+      @media screen and (max-width: ($mobile-res / $font-base) * 1em) {
         @content;
       }
     }
 
     @if $bpoint == tablet {
 
-      @media screen and (max-width: ($tablet-res / $font-base) * 1em) and  (min-width: ($mobile-res + 1 / $font-base) * 1em) {
+      @media screen and (max-width: ($tablet-res / $font-base) * 1em) and  (min-width: (($mobile-res + 1) / $font-base) * 1em) {
         @content;
       }
     }
 
     @if $bpoint == desktop {
 
-      @media screen and (max-width: ($desktop-res / $font-base) * 1em) and  (min-width: ($tablet-res + 1 / $font-base) * 1em) {
+      @media screen and (max-width: ($desktop-res / $font-base) * 1em) and  (min-width: (($tablet-res + 1) / $font-base) * 1em) {
         @content;
       }
     }
 
     @if $bpoint == large-desktop {
 
-      @media screen and (min-width: ($desktop-res + 1 / $font-base) * 1em) {
+      @media screen and (min-width: (($desktop-res + 1) / $font-base) * 1em) {
         @content;
       }
     }
@@ -80,8 +80,16 @@
       @media screen and (max-width: ($bpoint / $font-base) * 1em) {
           @content;
       }
+    } @else {
+      // @TODO: get min and max through a loop and add them
+      @each $widthVal in $caseMinMax {
+
+        // @media screen and (min-width: ( ((#{$widthVal})*1) / $font-base) * 1em) {
+        //   @content;
+        // }
+      }
+
     }
-    // @TODO: get min and max through a loop and add them
 
   }
 
