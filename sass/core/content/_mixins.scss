@@ -18,18 +18,99 @@
   font-size:$font-size / $base-font-size +rem;
 }
 
-/** Source : http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ **/
-/** Rem with pixels fallback  **/
 
-@function calculateRem($size) {
-  $remSize: $size / $font-base; /* 16px is just a prefered value and can be changed */
-  @return $remSize * 1rem;
+/** REM TO PX CONVERSION WITH PX FALLBACK USEABLE WITH OTHER CSS PROPERTIES **/
+
+/** http://gregrickaby.com/using-the-golden-ratio-and-rems/ **/
+
+// Set your root font-size here
+$root-font-size: 16;
+$base-line-height: 24;
+
+/* Functions used for the mixin */
+
+@function parseInt($n) {
+  @return $n / ($n * 0 + 1);
 }
 
-@mixin font-size($size) {
-  font-size: $size * 1px;
-  font-size: calculateRem($size);
+@function rem($value) {
+
+  $root: $root-font-size;
+  $val: parseInt($value);
+  $return: ();
+
+  @if unit($value) == "px" {
+    $return: append($return, ($val / $root + rem));
+  } @else {
+    $return: append($return, ($val * $root + px));
+  }
+
+  @return $return;
 }
+
+/* Just a reminder: don't use this mixin with properties using percent as value */
+
+@mixin rem($property, $values) {
+
+  $px : ();
+  $rem: ();
+
+  $root: $root-font-size;
+
+  @each $value in $values {
+    @if $value == 0 or $value == auto {
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else if type-of($value) == number {
+      $unit: unit($value);
+      $val: parseInt($value);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / $root + rem));
+      }
+
+      @if $unit == "rem" {
+        $px : append($px,  ($val * $root + px));
+        $rem: append($rem, $value);
+      }
+    }
+
+    @else {
+      $px : append($px,  $value);
+      $rem: append($rem, $value);
+    }
+  }
+
+  @if $px == $rem {
+    #{$property}: $px;
+  } @else {
+    #{$property}: $px;
+    #{$property}: $rem;
+  }
+
+}
+
+/* Calculate Line-height */
+/* $baseLineHeight is calculated thanks to Golden Ratio rules,
+ * read more here: http://www.pearsonified.com/typography/
+ * and especially this link for calculations details :
+ * http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+*/
+
+@mixin lineHeight($theFontSize, $lineWidth) {
+
+  $phi: 1.6180339887; // The Golden Number
+  $fontSize: parseInt($theFontSize); // Avoid errors
+  $ajustedLineHeight: ( $phi - 1/(2 * $phi) * ( 1 - ( $lineWidth/( ($fontSize * $phi) * ($fontSize * $phi) ) ) ) ); // The ajusted line-height width line-width (your container's width)
+  $baseLineHeight: round($fontSize * $ajustedLineHeight); // Corrected line-height for the Web (pixels troubles)
+
+  line-height: ( parseInt($baseLineHeight) / parseInt($fontSize) );
+
+}
+
 
 /** MEDIA QUERIES MIXINS **/
 /** Used for default breakpoint and more; breakpoint are converted to em too **/
@@ -215,7 +296,7 @@ Excerpt from http://css-tricks.com/centering-in-the-unknown/
  */
 
 
-/** SVG BACKGROUND SIZE  WITH FALLBACK **/
+/** SVG BACKGROUND IMAGE SIZE  WITH FALLBACK **/
 
 $image-path: '../img' !default;
 $fallback-extension: 'png' !default;

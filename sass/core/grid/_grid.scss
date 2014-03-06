@@ -61,7 +61,7 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
             .grid-col#{$i} {
                 @include cols($i);
 
-                min-height: 150px;
+                min-height: 1px;
                 margin-bottom: $gutter;
 
                 @for $j from 1 through ($i - 1) {
@@ -97,6 +97,9 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
         @for $i from 1 through $cols {
             .grid-col#{$i} {
                 @include cols($i);
+
+                min-height: 1px;
+                margin-bottom: $gutter;
 
                 @for $j from 1 through ($i - 1) {
                     .grid-col#{$j} {
@@ -169,6 +172,10 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
 	padding: 0;
 }
 
+html {
+    font-size: 100%;
+}
+
 a {
 	text-decoration: none;
 }
@@ -183,6 +190,10 @@ button:active {
 
 a:focus {
 	-moz-outline-style: none;
+}
+
+img {
+    max-width: 100%;
 }
 
 /* For FireFox */
