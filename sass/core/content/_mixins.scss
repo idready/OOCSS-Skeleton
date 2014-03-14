@@ -165,6 +165,9 @@ $base-line-height: 24;
     } @else {
       // @TODO: get min and max through a loop and add them
       @each $widthVal in $caseMinMax {
+        // @media screen and (min-width: ( ((#{$widthVal})*1) / $font-base) * 1em) {
+        //   @content;
+        // }
       }
 
     }
@@ -299,10 +302,10 @@ Excerpt from http://css-tricks.com/centering-in-the-unknown/
 /** SVG BACKGROUND IMAGE SIZE  WITH FALLBACK **/
 
 $image-path: '../img' !default;
-$fallback-extension: 'png' !default;
+$d-fallback-extension: 'png' !default;
 $retina-suffix: '@2x';
 
-@mixin background-image($name, $size:false, $fallback-extension){
+@mixin background-image($name, $size:false, $fallback-extension: 'png'){
 
     background-image: url(#{$image-path}/#{$name}.svg);
 
