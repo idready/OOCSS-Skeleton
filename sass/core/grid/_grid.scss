@@ -43,6 +43,10 @@
 }
 
 
+%test {
+    color: $black;
+}
+
 /*** 12 Columns Grid ***/
 
 $cols: 12;
@@ -57,6 +61,8 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
             float: left;
             margin-left: $gutter;
         }
+
+        @extend %test;
 
         @for $i from 1 through $cols {
             .grid-col#{$i} {
@@ -94,6 +100,8 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
             float: left;
             margin-left: $gutter;
         }
+
+        @extend %test;
 
         @for $i from 1 through $cols {
             .grid-col#{$i} {

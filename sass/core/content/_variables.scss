@@ -12,14 +12,14 @@
     * Change the values below to suit your needs
 \*------------------------------------*/
 
-$font-base: 16;
+$font-base: 16 !default;
 
 $mobile-res: 320;
 $tablet-res: 768;
 $desktop-res: 1024;
 $large-desktop-res: 1260;
 
-$total-col: 12;
+$total-col: 12 !default;
 
 
 /*------------------------------------*\

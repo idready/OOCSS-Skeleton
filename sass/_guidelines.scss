@@ -1,4 +1,4 @@
-/**
+/*
 *
 * @Moudondi Godfried
 * @01/08/2013
@@ -300,4 +300,22 @@
  */
 
 
-/* Vertical rhythm */
+/* Compass */
+
+/*
+ * If you are using compass, you should use the plugin 'inline-image' which convert an image to base64 and avoid
+ * Http request; this should be use for single lightweight image not heavy one.
+ * For fonts you can use 'inline-font-file' plugin.
+ *
+ * Usage: http://compass-style.org/reference/compass/helpers/inline-data/
+ */
+
+/*
+ * If you are using compass, you should use the picture dimensions plugin instead of settings dimensions manually,
+ * this will allow an easy pictures sources replacements for future.
+ * Usage: height: *picture-folder*-sprite-height(picture-src)
+ *
+ * More info: http://compass-style.org/help/tutorials/spriting/
+ */
+
+/* Vertical rhythm

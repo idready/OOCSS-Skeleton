@@ -185,12 +185,17 @@ $base-line-height: 24;
 * @include triangle within a pseudo element and add positioning properties (ie. top, left)
 * $direction: up, down, left, right
 */
-@mixin triangle($direction, $size: 6px, $color: #222){
 
+.traingle-mixin {
   content: '';
   display: block;
   position: absolute;
   height: 0; width: 0;
+}
+
+@mixin triangle($direction, $size: 6px, $color: #222){
+
+  @extend .traingle-mixin;
 
   @if ($direction == 'up'){
 
@@ -406,3 +411,16 @@ $retina-suffix: '@2x';
 }
 
 **/
+
+
+/*------------------------------------*\
+    $PICTO & $SPRITES
+\*------------------------------------*/
+
+%commonButtonsProp () {
+
+    cursor: pointer;
+    display: inline-block;
+    *display: inline; /* Hack IE7 */
+    zoom: 1;
+}
