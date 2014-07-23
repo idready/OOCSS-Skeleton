@@ -133,6 +133,7 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
     [class*="grid-col"] {
 
         display: block;
+        height: auto;
         margin-bottom: $gutter;
         min-height: 1px;
 
