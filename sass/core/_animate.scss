@@ -1,0 +1,240 @@
+$duration: .5s; // default 1s
+$delay: 0s;   // default 0.2s
+$function: ease;
+$fill: both;
+$visibility: hidden;
+
+@import "animate/properties.scss";
+@import "animate/bounce.scss";
+@import "animate/bounceIn.scss";
+@import "animate/bounceInDown.scss";
+@import "animate/bounceInLeft.scss";
+@import "animate/bounceInRight.scss";
+@import "animate/bounceInUp.scss";
+@import "animate/bounceOut.scss";
+@import "animate/bounceOutDown.scss";
+@import "animate/bounceOutLeft.scss";
+@import "animate/bounceOutRight.scss";
+@import "animate/bounceOutUp.scss";
+@import "animate/fadeIn.scss";
+@import "animate/fadeInDown.scss";
+@import "animate/fadeInDownBig.scss";
+@import "animate/fadeInLeft.scss";
+@import "animate/fadeInLeftBig.scss";
+@import "animate/fadeInRight.scss";
+@import "animate/fadeInRightBig.scss";
+@import "animate/fadeInUp.scss";
+@import "animate/fadeInUpBig.scss";
+@import "animate/fadeOut.scss";
+@import "animate/fadeOutDown.scss";
+@import "animate/fadeOutDownBig.scss";
+@import "animate/fadeOutLeft.scss";
+@import "animate/fadeOutLeftBig.scss";
+@import "animate/fadeOutRight.scss";
+@import "animate/fadeOutRightBig.scss";
+@import "animate/fadeOutUp.scss";
+@import "animate/fadeOutUpBig.scss";
+@import "animate/flash.scss";
+@import "animate/flip.scss";
+@import "animate/flipInX.scss";
+@import "animate/flipInY.scss";
+@import "animate/flipOutX.scss";
+@import "animate/flipOutY.scss";
+@import "animate/hinge.scss";
+@import "animate/lightSpeedIn.scss";
+@import "animate/lightSpeedOut.scss";
+@import "animate/pulse.scss";
+@import "animate/slideInDown.scss";
+@import "animate/slideOutUp.scss";
+@import "animate/rollIn.scss";
+@import "animate/rollOut.scss";
+@import "animate/rotateIn.scss";
+@import "animate/rotateInDownLeft.scss";
+@import "animate/rotateInDownRight.scss";
+@import "animate/rotateInUpLeft.scss";
+@import "animate/rotateInUpRight.scss";
+@import "animate/rotateOut.scss";
+@import "animate/rotateOutDownLeft.scss";
+@import "animate/rotateOutDownRight.scss";
+@import "animate/rotateOutUpLeft.scss";
+@import "animate/rotateOutUpRight.scss";
+@import "animate/shake.scss";
+@import "animate/swing.scss";
+@import "animate/tada.scss";
+@import "animate/wiggle.scss";
+@import "animate/wobble.scss";
+
+.bounce {
+	@include bounce($duration, $delay, $function, $fill, $visibility);
+}
+.bounceIn {
+	@include bounceIn($duration, $delay, $function, $fill, $visibility);
+}
+.bounceInDown {
+	@include bounceInDown($duration, $delay, $function, $fill, $visibility);
+}
+.bounceInLeft {
+	@include bounceInLeft($duration, $delay, $function, $fill, $visibility);
+}
+.bounceInRight {
+	@include bounceInRight($duration, $delay, $function, $fill, $visibility);
+}
+.bounceInUp {
+	@include bounceInUp($duration, $delay, $function, $fill, $visibility);
+}
+.bounceOut {
+	@include bounceOut($duration, $delay, $function, $fill, $visibility);
+}
+.bounceOutDown {
+	@include bounceOutDown($duration, $delay, $function, $fill, $visibility);
+}
+.bounceOutLeft {
+	@include bounceOutLeft($duration, $delay, $function, $fill, $visibility);
+}
+.bounceOutRight {
+	@include bounceOutRight($duration, $delay, $function, $fill, $visibility);
+}
+.bounceOutUp {
+	@include bounceOutUp($duration, $delay, $function, $fill, $visibility);
+}
+.fadeIn {
+	@include fadeIn($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInDown {
+	@include fadeInDown($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInDownBig {
+	@include fadeInDownBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInLeft {
+	@include fadeInLeft($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInLeftBig {
+	@include fadeInLeftBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInRight {
+	@include fadeInRight($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInRightBig {
+	@include fadeInRightBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInUp {
+	@include fadeInUp($duration, $delay, $function, $fill, $visibility);
+}
+.fadeInUpBig {
+	@include fadeInUpBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOut {
+	@include fadeOut($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutDown {
+	@include fadeOutDown($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutDownBig {
+	@include fadeOutDownBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutLeft {
+	@include fadeOutLeft($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutLeftBig {
+	@include fadeOutLeftBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutRight {
+	@include fadeOutRight($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutRightBig {
+	@include fadeOutRightBig($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutUp {
+	@include fadeOutUp($duration, $delay, $function, $fill, $visibility);
+}
+.fadeOutUpBig {
+	@include fadeOutUpBig($duration, $delay, $function, $fill, $visibility);
+}
+.flash {
+	@include flash($duration, $delay, $function, $fill, $visibility);
+}
+.flip {
+	@include flip($duration, $delay, $function, $fill, $visibility);
+}
+.flipInX {
+	@include flipInX($duration, $delay, $function, $fill, $visibility);
+}
+.flipInY {
+	@include flipInY($duration, $delay, $function, $fill, $visibility);
+}
+.flipOutX {
+	@include flipOutX($duration, $delay, $function, $fill, $visibility);
+}
+.flipOutY {
+	@include flipOutY($duration, $delay, $function, $fill, $visibility);
+}
+.hinge {
+	@include hinge($duration, $delay, $function, $fill, $visibility);
+}
+.lightSpeedIn {
+	@include lightSpeedIn($duration, $delay, $fill, $visibility);
+}
+.lightSpeedOut {
+	@include lightSpeedOut($duration, $delay, $fill, $visibility);
+}
+.pulse {
+	@include pulse($duration, $delay, $function, $fill, $visibility);
+}
+.slideInDown {
+	@include slideInDown(0.4s, $delay, $function, $fill, $visibility);
+}
+.slideOutUp {
+	@include slideOutUp(0.4s, $delay, $function, $fill, $visibility);
+}
+.rollIn {
+	@include rollIn($duration, $delay, $function, $fill, $visibility);
+}
+.rollOut {
+	@include rollOut($duration, $delay, $function, $fill, $visibility);
+}
+.rotateIn {
+	@include rotateIn($duration, $delay, $function, $fill, $visibility);
+}
+.rotateInDownLeft {
+	@include rotateInDownLeft($duration, $delay, $function, $fill, $visibility);
+}
+.rotateInDownRight {
+	@include rotateInDownRight($duration, $delay, $function, $fill, $visibility);
+}
+.rotateInUpLeft {
+	@include rotateInUpLeft($duration, $delay, $function, $fill, $visibility);
+}
+.rotateInUpRight {
+	@include rotateInUpRight($duration, $delay, $function, $fill, $visibility);
+}
+.rotateOut {
+	@include rotateOut($duration, $delay, $function, $fill, $visibility);
+}
+.rotateOutDownLeft {
+	@include rotateOutDownLeft($duration, $delay, $function, $fill, $visibility);
+}
+.rotateOutDownRight {
+	@include rotateOutDownRight($duration, $delay, $function, $fill, $visibility);
+}
+.rotateOutUpLeft {
+	@include rotateOutUpLeft($duration, $delay, $function, $fill, $visibility);
+}
+.rotateOutUpRight {
+	@include rotateOutUpRight($duration, $delay, $function, $fill, $visibility);
+}
+.shake {
+	@include shake($duration, $delay, $function, $fill, $visibility);
+}
+.swing {
+	@include swing($duration, $delay, $function, $fill, $visibility);
+}
+.tada {
+	@include tada($duration, $delay, $function, $fill, $visibility);
+}
+.wiggle {
+	@include wiggle($duration, $delay, $function, $fill, $visibility);
+}
+.wobble {
+	@include wobble($duration, $delay, $function, $fill, $visibility);
+}
