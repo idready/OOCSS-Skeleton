@@ -13,8 +13,13 @@ jQuery(document).ready( function() {
             document.documentElement.clientHeight
         );
     };
-    
 
+
+    // handle animations
+    jQuery(document).on('animationend, webkitAnimationEnd', function(e) {
+
+        console.log(e);
+    });
 
 
 });
