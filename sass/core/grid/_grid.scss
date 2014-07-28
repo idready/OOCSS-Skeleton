@@ -13,9 +13,24 @@
  * apply a natural box layout model to all elements |
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  * ONLY for IE8 and up browser support
- */
+ * OLD WAY
+ *
 *,*:after,*:before {
     @include box-sizing(border-box);
+}
+*/
+
+/*
+ * Credits to csstricks.com and jon Neal
+ * http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/?utm_source=dlvr.it&utm_medium=twitter
+ */
+
+html {
+    @include box-sizing(border-box);
+}
+
+*, *:before, *:after {
+    @include box-sizing(inherit);
 }
 
 
