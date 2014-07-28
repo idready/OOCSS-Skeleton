@@ -18,3 +18,4 @@ log/*
 conf/*
 
 .sass-cache/*
+css/*
