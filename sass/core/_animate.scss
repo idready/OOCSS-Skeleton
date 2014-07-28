@@ -182,10 +182,10 @@ $visibility: hidden;
 	@include pulse($duration, $delay, $function, $fill, $visibility);
 }
 .slideInDown {
-	@include slideInDown(0.4s, $delay, $function, $fill, $visibility);
+	@include slideInDown($duration, $delay, $function, $fill, $visibility);
 }
 .slideOutUp {
-	@include slideOutUp(0.4s, $delay, $function, $fill, $visibility);
+	@include slideOutUp($duration, $delay, $function, $fill, $visibility);
 }
 .rollIn {
 	@include rollIn($duration, $delay, $function, $fill, $visibility);

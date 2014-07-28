@@ -42,8 +42,7 @@ html {
 /*
  *  Thanks Inuits.css Framework
  *  1. Make sure all viewport height is filled
- *  2. Avoid zooming fonts effect on certain mobile devices
- *  3. Make sure Fonts rendering is consistent on OSX when sub-pixel anti-aliasing is not supported.
+ *  2. Make sure Fonts rendering is consistent on OSX when sub-pixel anti-aliasing is not supported.
  */
 
 html {
@@ -52,10 +51,8 @@ html {
     line-height: $base-line-height / parseInt($base-font-size);
     overflow-y: scroll;
     min-height: 100%; // 1.
-    -webkit-text-size-adjust: 100%; // 2.
-        -ms-text-size-adjust: 100%; // 2.
-    -moz-osx-font-smoothing: grayscale; // 3.
-     -webkit-font-smoothing: antialiased; // 3.
+    -moz-osx-font-smoothing: grayscale; // 2.
+     -webkit-font-smoothing: antialiased; // 2.
 }
 
 a {
