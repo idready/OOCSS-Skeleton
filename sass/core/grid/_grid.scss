@@ -5,34 +5,6 @@
 **/
 
 
-/* ==========================================================================
-    Avoid troubles
-========================================================================== */
-
-/**
- * apply a natural box layout model to all elements |
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * ONLY for IE8 and up browser support
- * OLD WAY
- *
-*,*:after,*:before {
-    @include box-sizing(border-box);
-}
-*/
-
-/*
- * Credits to csstricks.com and jon Neal
- * http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/?utm_source=dlvr.it&utm_medium=twitter
- */
-
-html {
-    @include box-sizing(border-box);
-}
-
-*, *:before, *:after {
-    @include box-sizing(inherit);
-}
-
 
 /* ==========================================================================
     Grid system (Two Level)
@@ -110,8 +82,6 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
             margin-left: $gutter;
         }
 
-        @extend %test;
-
         @for $i from 1 through $cols {
             .grid-col#{$i} {
                 @include cols($i);
@@ -173,82 +143,4 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
 /* IE7 */
 .lte7 .grid-row {
     height: 1%;
-}
-
-/* ==========================================================================
-    Media Queries
-========================================================================== */
-
-
-/* Convert from px to em */
-/* Change these accordingly and /or add other breakpoints */
-
-
-
-
-* {
-	margin: 0;
-	padding: 0;
-}
-
-html {
-    font-size: 100%;
-}
-
-a {
-	text-decoration: none;
-}
-
-a,
-a:focus,
-a:active,
-button,
-button:active {
-	outline: none;
-}
-
-a:focus {
-	-moz-outline-style: none;
-}
-
-img {
-    max-width: 100%;
-}
-
-/* For FireFox */
-input[type="submit"]::-moz-focus-inner,
-input[type="button"]::-moz-focus-inner,
-button[type="submit"]::-moz-focus-inner,
-button[type="button"]::-moz-focus-inner {
-	border: 0px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: normal;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-textarea {
-	resize: none;
-	outline: none;
-	overflow: auto;
-}
-
-/* Grid */
-
-body {
-}
-
-.wrap {
-    // add max-width here to restreint container eg. 1260px
 }

@@ -1,0 +1,21 @@
+/**
+* @author
+* @date
+* Define the different properties for list elements
+**/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove extra vertical marging for nested list credits to Inuit.css framework. Credits to Inuits.css framework */
+
+li {
+
+    > ul,
+    >ol {
+        margin-bottom: 0;
+    }
+}

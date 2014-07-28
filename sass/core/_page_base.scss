@@ -1,0 +1,93 @@
+/**
+* @author
+* @date
+* Define the mere page default settings
+**/
+
+/* ==========================================================================
+    Avoid troubles
+========================================================================== */
+
+/**
+ * apply a natural box layout model to all elements |
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * ONLY for IE8 and up browser support
+ * OLD WAY
+ *
+*,*:after,*:before {
+    @include box-sizing(border-box);
+}
+*/
+
+/*
+ * Credits to csstricks.com and jon Neal
+ * http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/?utm_source=dlvr.it&utm_medium=twitter
+ */
+
+html {
+    @include box-sizing(border-box);
+}
+
+*, *:before, *:after {
+    @include box-sizing(inherit);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ *  Thanks Inuits.css Framework
+ *  1. Make sure all viewport height is filled
+ *  2. Avoid zooming fonts effect on certain mobile devices
+ *  3. Make sure Fonts rendering is consistent on OSX when sub-pixel anti-aliasing is not supported.
+ */
+
+html {
+
+    font-size: rem($base-font-size);
+    line-height: $base-line-height / parseInt($base-font-size);
+    overflow-y: scroll;
+    min-height: 100%; // 1.
+    -webkit-text-size-adjust: 100%; // 2.
+        -ms-text-size-adjust: 100%; // 2.
+    -moz-osx-font-smoothing: grayscale; // 3.
+     -webkit-font-smoothing: antialiased; // 3.
+}
+
+a {
+    text-decoration: none;
+}
+
+a,
+a:focus,
+a:active,
+button,
+button:active {
+    outline: none;
+}
+
+a:focus {
+    -moz-outline-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+
+/** Main wrapper rules here **/
+
+body {
+}
+
+.wrap {
+    // add max-width here to restreint container eg. 1260px
+}

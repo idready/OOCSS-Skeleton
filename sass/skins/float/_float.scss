@@ -1,29 +1,18 @@
 /**
 * @author
 * @date
-* Define the different float property
+* Define the different float properties
 **/
 
-/* Clearfix properties for after and before float */
-.clearfix:before,
-.clearfix:after {
-	content: "";
-	display: table;
-}
 
-.clearfix:after {
-	clear: both;
-}
+/*
+ * %clearfix is a Silent version for clearfix ; source: http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox
+ */
 
-.clearfix {
-	*zoom: 1; /* Hack IE7 */
-}
-
-// Silent version for clearfix ; source: http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/
-
+.clearfix,
 %clearfix {
 
-  *zoom: 1;
+  *zoom: 1; /* Hack IE7 */
 
   &:before, &:after {
     content: " ";

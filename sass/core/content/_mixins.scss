@@ -14,8 +14,8 @@
 
 /** Use of rem with pixel fallback **/
 @mixin font-size($font-size){
-  font-size:$font-size +px;
-  font-size:$font-size / $base-font-size +rem;
+  font-size: $font-size +px;
+  font-size: $font-size / $base-font-size +rem;
 }
 
 
@@ -25,7 +25,7 @@
 
 // Set your root font-size here
 $root-font-size: 16;
-$base-line-height: 24;
+$base-line-height: 28;
 
 /* Functions used for the mixin */
 
@@ -122,28 +122,28 @@ $base-line-height: 24;
 
     @if $bpoint == mobile {
 
-      @media screen and (max-width: ($mobile-res / $font-base) * 1em) {
+      @media screen and (max-width: ($mobile-res / $base-font-size) * 1em) {
         @content;
       }
     }
 
     @if $bpoint == tablet {
 
-      @media screen and (max-width: ($tablet-res / $font-base) * 1em) and  (min-width: (($mobile-res + 1) / $font-base) * 1em) {
+      @media screen and (max-width: ($tablet-res / $base-font-size) * 1em) and  (min-width: (($mobile-res + 1) / $base-font-size) * 1em) {
         @content;
       }
     }
 
     @if $bpoint == desktop {
 
-      @media screen and (max-width: ($desktop-res / $font-base) * 1em) and  (min-width: (($tablet-res + 1) / $font-base) * 1em) {
+      @media screen and (max-width: ($desktop-res / $base-font-size) * 1em) and  (min-width: (($tablet-res + 1) / $base-font-size) * 1em) {
         @content;
       }
     }
 
     @if $bpoint == large-desktop {
 
-      @media screen and (min-width: (($desktop-res + 1) / $font-base) * 1em) {
+      @media screen and (min-width: (($desktop-res + 1) / $base-font-size) * 1em) {
         @content;
       }
     }
@@ -153,19 +153,19 @@ $base-line-height: 24;
     // apply only min conditionnal breakpoint
     @if $caseMin != 0 {
 
-      @media screen and (min-width: ($bpoint / $font-base) * 1em) {
+      @media screen and (min-width: ($bpoint / $base-font-size) * 1em) {
           @content;
       }
     // apply only max conditionnal breakpoint
     } @else if $caseMax != 0 {
 
-      @media screen and (max-width: ($bpoint / $font-base) * 1em) {
+      @media screen and (max-width: ($bpoint / $base-font-size) * 1em) {
           @content;
       }
     } @else {
       // @TODO: get min and max through a loop and add them
       @each $widthVal in $caseMinMax {
-        // @media screen and (min-width: ( ((#{$widthVal})*1) / $font-base) * 1em) {
+        // @media screen and (min-width: ( ((#{$widthVal})*1) / $base-font-size) * 1em) {
         //   @content;
         // }
       }
@@ -417,7 +417,7 @@ $retina-suffix: '@2x';
     $PICTO & $SPRITES
 \*------------------------------------*/
 
-%commonButtonsProp () {
+%commonButtonsProp {
 
     cursor: pointer;
     display: inline-block;
