@@ -15,10 +15,13 @@ jQuery(document).ready( function() {
     };
 
 
-    // handle animations
+    /** handle animations **/
+
+    /* OnEnd */
     jQuery(document).on('animationend, webkitAnimationEnd', function(e) {
 
         console.log(e);
+        (jQuery(e.target).hasClass('animated')) ?  jQuery(e.target).removeClass('animated') : '';
     });
 
 
