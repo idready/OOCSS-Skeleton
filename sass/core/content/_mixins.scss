@@ -231,7 +231,7 @@ $base-line-height: 28;
 /** VERTICAL ALIGN **/
 
 /** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
-/** Vertically center an element wihtout knowing itsdimensions **/
+/** Vertically center an element wihtout knowing its dimensions **/
 
 @mixin ghostVerticalAlign(){
 
@@ -243,35 +243,15 @@ $base-line-height: 28;
   }
 }
 
-/** USAGE :
+/* Alternative */
 
-Excerpt from http://css-tricks.com/centering-in-the-unknown/
-
-// This parent can be any width and height
-
-.block {
-  text-align: center;
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
-
-// The ghost, nudged to maintain perfect centering
-
-.block:before {
-  content: '';
-  display: inline-block;
-  height: 100%;
-  vertical-align: middle;
-  margin-right: -0.25em; / Adjusts for spacing /
-}
-
-/ The element to be centered, can also be of any width and height
-
-.centered {
-  display: inline-block;
-  vertical-align: middle;
-  width: 300px;
-}
-
-**/
 
 
 /** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
