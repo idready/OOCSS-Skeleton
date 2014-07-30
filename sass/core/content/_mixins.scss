@@ -243,16 +243,6 @@ $base-line-height: 28;
   }
 }
 
-/* Alternative */
-
-@mixin vertical-align {
-  position: relative;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-
 
 /** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
 /** Sprites resize mixin; to read further https://gist.github.com/darren131/3410875 **/

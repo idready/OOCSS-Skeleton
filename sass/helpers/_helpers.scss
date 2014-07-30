@@ -39,6 +39,12 @@
  *
  */
 
+/* Note: Add these properties on the parent element to avoid blurry effect */
+%parent-element-vertical-align {
+
+  @include transform-style(preserve-3d);
+}
+
 %vertical-align {
   position: relative;
   top: 50%;
