@@ -19,3 +19,9 @@ conf/*
 
 .sass-cache/*
 css/*
+
+#Grunt
+node_modules/*
+
+#HTML validation grunt task
+validation-status.json
