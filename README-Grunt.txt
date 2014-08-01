@@ -43,6 +43,7 @@ NOTE: make sure your #GRUNT version is supported for each task before you instal
 - Grunt HTML Validation (locally validate all your html files) : sudo npm install grunt-notify --save-dev
 - Grunt UnCSS (remove unsed css properties for a page) : sudo npm install grunt-uncss --save-dev
 - Grunt SVGMin (minify svg) : sudo npm install grunt-svgmin --save-dev
+- Grunt Pagespeed (use Google page speed perf tool adnd output results) : sudo npm install grunt-pagespeed --save-dev
 
 NOTE: Refer to each task page on Github for more infos on settings.
 
