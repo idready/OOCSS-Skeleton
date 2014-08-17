@@ -1,7 +1,12 @@
 
+/* Vendor dependecies */
 @import 'compass';
+
+/* Authored dependencies */
 @import 'core/core';
 @import 'helpers/helpers';
 @import 'skins/skins';
+
+/* Components and sections */
 @import 'components/components';
 @import 'modules/modules';

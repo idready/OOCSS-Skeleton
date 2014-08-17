@@ -115,7 +115,7 @@ $base-line-height: 28;
 /** MEDIA QUERIES MIXINS **/
 /** Used for default breakpoint and more; breakpoint are converted to em too **/
 
-@mixin mQueries ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: ($minValue, $maxValue)) {
+@mixin bp ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: ($minValue, $maxValue)) {
 
   // Dealing with default breakpoints
   @if $default == true {
