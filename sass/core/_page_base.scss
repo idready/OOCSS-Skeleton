@@ -80,6 +80,17 @@ h6 {
     font-weight: normal;
 }
 
+/** Credits to Twitter's bootstrap **/
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 
 /** Main wrapper rules here **/
 
