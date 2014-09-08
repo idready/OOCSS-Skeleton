@@ -144,3 +144,11 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
 .lte7 .grid-row {
     height: 1%;
 }
+
+/** Viewport bugfix for IE10 on Windows 8 & W8 Phone (< update 3) **/
+
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }

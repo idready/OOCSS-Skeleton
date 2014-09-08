@@ -356,6 +356,19 @@ $retina-suffix: '@2x';
   filter: #{alpha(opacity=$opacity-ie)};
 }
 
+// Reset Box-sizing
+
+@mixin reset-box-sizing() { // For Third party if the proper method fails (see grid/page_base.scss)
+
+  &,
+  *,
+  *:before,
+  *:after {
+    @include box-sizing(content-box);
+  }
+
+}
+
 // Gradients
 
 // Horizontal gradient, from left to right
