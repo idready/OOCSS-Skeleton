@@ -16,134 +16,131 @@
  * NB: When making css for columns, never ever define margin, padding or container width.
  */
 
+/*** Variables for grid ***/
+
+$grid-columns: 12 !default;
+$grid-gutter: 20px !default;
+// $grid-one-col: (100% - ($grid-gutter * ($grid-columns - 1))) / $grid-columns !default;
+$grid-one-col: (100 / $grid-columns) * 1% !default;
+
+$grid-row-min-height: 1px !default;
+
+// Max width
+$max-screen-width: rem(1400px) !default;
+
+// Breakpoints:
+
+$bp-xs-screen: rem(480px) !default;
+$bp-sm-screen: rem(768px) !default;
+$bp-md-screen: rem(1024px) !default;
+$bp-lg-screen: rem(1200px) !default;
+
 /*** Mixins for grid ***/
 
-@mixin cols($num) {
-    width: ($one_col * $num) + ($gutter * ($num - 1));
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  }
+  #{$list} {
+    float: left;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    padding-left:  rem($grid-gutter / 2);
+    padding-right: rem($grid-gutter / 2);
+    position: relative;
+
+  }
+
 }
 
-@mixin sub_cols($num_child, $num_parent) {
-    $parent_size: ($one_col * $num_parent) + ($gutter * ($num_parent - 1));
-    $child_size: ($one_col * $num_child) + ($gutter * ($num_child - 1));
-    margin-left: ($gutter / $parent_size) * 100%;
-    width: ($child_size / $parent_size) * 100%;
+@mixin calc-grid-column ($screen-type, $columns: 12) {
+
+    @for $i from 1 through $columns {
+
+        .col-#{$screen-type}-#{$i} {
+            width: ($grid-one-col * $i);
+        }
+    }
 }
 
 
 /*** 12 Columns Grid ***/
 
-$cols: 12;
-$gutter: 1.5%;
-$one_col: (100% - ($gutter * ($cols - 1))) / $cols;
-
-/* @group grid */
-.container12 {
-
-    .grid-row {
-        #{enumerate('.grid-col', 1, $cols, '')} {
-            float: left;
-            margin-left: $gutter;
-        }
-
-        @for $i from 1 through $cols {
-            .grid-col#{$i} {
-                @include cols($i);
-
-                min-height: 1px;
-                margin-bottom: $gutter;
-
-                @for $j from 1 through ($i - 1) {
-                    .grid-col#{$j} {
-                        @include sub_cols($j, $i);
-                    }
-                }
-            }
-        }
-    }
-
-}
-/* @end of 12 Columns Grid*/
-
-
-
-/*** 16 Columns Grid ***/
-
-$cols: 16;
-$gutter: 1.5%;
-$one_col: (100% - ($gutter * ($cols - 1))) / $cols;
-
-
-/* @group grid */
-.container16 {
-
-    .grid-row {
-        #{enumerate('.grid-col', 1, $cols, '')} {
-            float: left;
-            margin-left: $gutter;
-        }
-
-        @for $i from 1 through $cols {
-            .grid-col#{$i} {
-                @include cols($i);
-
-                min-height: 1px;
-                margin-bottom: $gutter;
-
-                @for $j from 1 through ($i - 1) {
-                    .grid-col#{$j} {
-                        @include sub_cols($j, $i);
-                    }
-                }
-            }
-        }
-    }
-
-}
-/* @end of 16 Columns Grid*/
-
 /** common grid properties **/
 
 /* add you custom container grid here */
-.container12,
-.container16 {
+.container {
     margin: 0 auto;
     padding: 0;
     width: 100%;
 }
 
 /* add you custom container grid here */
-.container12 .grid-row,
-.container16 .grid-row {
 
-    [class*="grid-col"] {
+[class*="col-"] {
 
-        display: block;
-        height: auto;
-        margin-bottom: $gutter;
-        min-height: 1px;
+    display: block;
+    height: auto;
+    margin-bottom: rem($grid-gutter);
+    min-height: $grid-row-min-height;
+    width: 100%; /* Default grid width for mobile first */
 
-        &:first-child { margin-left: 0; }
+    [class*="col-"] {margin-bottom: 0;} // Not necessary on nested columns
+}
 
-        &.alpha { margin-left: 0; }
-        &.omega { margin-right: 0; }
+
+.grid-row {
+
+    @include clearfix();
+    // @TODO: include clearfix mixin
+
+
+    /* IE7 */
+    .lte7 & {height: 1%;}
+}
+
+@include make-grid-columns();
+
+
+/* Extra small screens
+ *
+ * Smartphones
+ */
+@media (min-width: $bp-xs-screen) {
+    @include calc-grid-column (xs, $grid-columns);
+}
+
+/* Small screens
+ *
+ * Tablets
+ */
+@media (min-width: $bp-sm-screen) {
+    @include calc-grid-column (sm, $grid-columns);
+
+    /* On nested grids avoid */
+    [class*="col-"] {
+
 
     }
-
 }
 
-.grid-row:before, .grid-row:after {
-    content: '';
-    display: table;
+/* Media screens
+ *
+ * Desktop
+ */
+@media (min-width: $bp-md-screen) {
+    @include calc-grid-column (md, $grid-columns);
 }
 
-.grid-row:after {
-    clear: both;
+/* Large screens
+ *
+ * Large desktop
+ */
+@media (min-width: $bp-lg-screen) {
+    @include calc-grid-column (lg, $grid-columns);
 }
 
-/* IE7 */
-.lte7 .grid-row {
-    height: 1%;
-}
+
 
 /** Viewport bugfix for IE10 on Windows 8 & W8 Phone (< update 3) **/
 

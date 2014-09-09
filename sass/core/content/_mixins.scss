@@ -188,16 +188,17 @@ $base-line-height: 28;
 * $direction: up, down, left, right
 */
 
-.traingle-mixin {
+%traingle-mixin {
   content: '';
   display: block;
   position: absolute;
-  height: 0; width: 0;
+  height: 0;
+  width: 0;
 }
 
 @mixin triangle($direction, $size: 6px, $color: #222){
 
-  @extend .traingle-mixin;
+  @extend %traingle-mixin;
 
   @if ($direction == 'up'){
 
@@ -337,6 +338,19 @@ $retina-suffix: '@2x';
   white-space: nowrap;
 }
 
+@mixin clearfix() {
+
+  *zoom: 1; /* Hack IE7 */
+
+  &:before, &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
 
 // Reset filters for IE
 //
