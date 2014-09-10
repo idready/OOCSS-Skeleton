@@ -33,7 +33,6 @@ html {
 }
 
 
-
 * {
     margin: 0;
     padding: 0;
@@ -78,6 +77,17 @@ h4,
 h5,
 h6 {
     font-weight: normal;
+}
+
+/** Credits to Twitter's bootstrap **/
+// Reset fonts for relevant elements
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 
