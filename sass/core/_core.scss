@@ -1,10 +1,7 @@
 
 @import 'normalize';
-@import 'animate';
-@import 'content/variables';
-@import 'content/mixins';
-@import 'content/vertical-rhythm';
+@import 'variables';
+@import 'components/components';
 @import 'utilities';
-@import 'grid/grid';
 @import 'page_base';
 @import 'print';

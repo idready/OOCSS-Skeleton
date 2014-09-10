@@ -1,0 +1,70 @@
+/**
+* @author
+* @date
+* Define breakpoints mixin
+**/
+
+/** MEDIA QUERIES MIXINS **/
+/** Used for default breakpoint and more; breakpoint are converted to em too **/
+
+@mixin bp ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: ($minValue, $maxValue)) {
+
+  // Dealing with default breakpoints
+  @if $default == true {
+
+    @if $bpoint == mobile {
+
+      @media screen and (max-width: ($mobile-res / $base-font-size) * 1em) {
+        @content;
+      }
+    }
+
+    @if $bpoint == tablet {
+
+      @media screen and (max-width: ($tablet-res / $base-font-size) * 1em) and  (min-width: (($mobile-res + 1) / $base-font-size) * 1em) {
+        @content;
+      }
+    }
+
+    @if $bpoint == desktop {
+
+      @media screen and (max-width: ($desktop-res / $base-font-size) * 1em) and  (min-width: (($tablet-res + 1) / $base-font-size) * 1em) {
+        @content;
+      }
+    }
+
+    @if $bpoint == large-desktop {
+
+      @media screen and (min-width: (($desktop-res + 1) / $base-font-size) * 1em) {
+        @content;
+      }
+    }
+
+  } @else if $default == false {
+
+    // apply only min conditionnal breakpoint
+    @if $caseMin != 0 {
+
+      @media screen and (min-width: ($bpoint / $base-font-size) * 1em) {
+          @content;
+      }
+    // apply only max conditionnal breakpoint
+    } @else if $caseMax != 0 {
+
+      @media screen and (max-width: ($bpoint / $base-font-size) * 1em) {
+          @content;
+      }
+    } @else {
+      // @TODO: get min and max through a loop and add them
+      @each $widthVal in $caseMinMax {
+        // @media screen and (min-width: ( ((#{$widthVal})*1) / $base-font-size) * 1em) {
+        //   @content;
+        // }
+      }
+
+    }
+
+  }
+
+
+}

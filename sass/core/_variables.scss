@@ -1,0 +1,66 @@
+/**
+* @author
+* @date
+* Define the global content variables
+**/
+
+/*------------------------------------*\
+    $SCREEN
+
+    * Define the different parameters for screen here, this will mainly deal with
+    * responsiveness of your website.
+    * Change the values below to suit your needs
+\*------------------------------------*/
+
+$base-font-family: sans-serif !default;
+$base-font-size: 16 !default;
+$base-line-height: 28 !default;
+
+// $mobile-res: 320;
+// $tablet-res: 768;
+// $desktop-res: 1024;
+// $large-desktop-res: 1260;
+
+// $total-col: 12 !default;
+
+
+/*------------------------------------*\
+    $COLORS
+\*------------------------------------*/
+
+$white: white;
+$black: black;
+
+
+
+/*------------------------------------*\
+    $ANIMATIONS
+\*------------------------------------*/
+
+$duration: .5s; // default 1s
+$delay: 0s;   // default 0.2s
+$function: ease;
+$fill: both;
+$visibility: hidden;
+
+
+/*------------------------------------*\
+    $GRID
+\*------------------------------------*/
+
+
+$grid-columns: 12 !default;
+$grid-gutter: 20px !default;
+
+$grid-one-col: (100 / $grid-columns) * 1% !default;
+
+$grid-row-min-height: 1px !default;
+
+// Max width
+$max-screen-width: rem(1400px) !default;
+
+// Breakpoints
+$bp-xs-screen: rem(480px) !default;
+$bp-sm-screen: rem(768px) !default;
+$bp-md-screen: rem(1024px) !default;
+$bp-lg-screen: rem(1200px) !default;

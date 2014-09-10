@@ -1,0 +1,39 @@
+/**
+* @author
+* @date
+* Define some useful mixins for SVG background and Fallback
+**/
+
+
+/** Source : http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox/ **/
+/** SVG Background Image with image fallback; it also takes on retina image display  **/
+/*
+ *  You will need files named as below
+ *  pattern.svg
+ *  pattern.png
+ *  pattern@2x.png
+ */
+
+
+/** SVG BACKGROUND IMAGE SIZE  WITH FALLBACK **/
+
+$image-path: '../img' !default;
+$d-fallback-extension: 'png' !default;
+$retina-suffix: '@2x';
+
+@mixin background-image($name, $size:false, $fallback-extension: 'png'){
+
+    background-image: url(#{$image-path}/#{$name}.svg);
+
+    @if($size){
+        background-size: $size;
+    }
+    // This class depends on Modernizr being used or not
+    .no-svg &{
+        background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+
+        @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+          background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+        }
+    }
+}

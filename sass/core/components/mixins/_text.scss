@@ -1,0 +1,26 @@
+/**
+* @author
+* @date
+* Define some useful mixins for text
+**/
+
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+/** Gracefully truncate any text and avoid overlow, default is ellipsis **/
+
+@mixin truncateText($overflow: ellipsis){
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow; // values are: clip, ellipsis, or a string
+}
+
+/** Credits to Titt's bootstrap **/
+
+// Text overflow
+
+@mixin text-overflow() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

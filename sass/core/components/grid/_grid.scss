@@ -1,0 +1,151 @@
+/**
+* @author
+* @date
+* Define the main pages' grid
+**/
+
+
+
+/* ==========================================================================
+    Grid system (Two Level)
+    Credit to @trevor_davis | http://davist11.github.io/nested-responsive-grid/
+    http://viget.com/inspire/building-a-nested-responsive-grid-with-sass-compass
+========================================================================== */
+
+/*
+ * NB: When making css for columns, never ever define margin, padding or container width.
+ */
+
+/*** Variables for grid ***/
+
+$grid-columns: 12 !default;
+$grid-gutter: 20px !default;
+// $grid-one-col: (100% - ($grid-gutter * ($grid-columns - 1))) / $grid-columns !default;
+$grid-one-col: (100 / $grid-columns) * 1% !default;
+
+$grid-row-min-height: 1px !default;
+
+// Max width
+$max-screen-width: rem(1400px) !default;
+
+// Breakpoints:
+
+$bp-xs-screen: rem(480px) !default;
+$bp-sm-screen: rem(768px) !default;
+$bp-md-screen: rem(1024px) !default;
+$bp-lg-screen: rem(1200px) !default;
+
+/*** Mixins for grid ***/
+
+@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
+  @for $i from (1 + 1) through $grid-columns {
+    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
+  }
+  #{$list} {
+    float: left;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    padding-left:  rem($grid-gutter / 2);
+    padding-right: rem($grid-gutter / 2);
+    position: relative;
+
+  }
+
+}
+
+@mixin calc-grid-column ($screen-type, $columns: 12) {
+
+    @for $i from 1 through $columns {
+
+        .col-#{$screen-type}-#{$i} {
+            width: ($grid-one-col * $i);
+        }
+    }
+}
+
+
+/*** 12 Columns Grid ***/
+
+/** common grid properties **/
+
+/* add you custom container grid here */
+.container {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+/* add you custom container grid here */
+
+[class*="col-"] {
+
+    display: block;
+    height: auto;
+    margin-bottom: rem($grid-gutter);
+    min-height: $grid-row-min-height;
+    width: 100%; /* Default grid width for mobile first */
+
+    [class*="col-"] {margin-bottom: 0;} // Not necessary on nested columns
+}
+
+
+.grid-row {
+
+    @include clearfix();
+    // @TODO: include clearfix mixin
+
+
+    /* IE7 */
+    .lte7 & {height: 1%;}
+}
+
+@include make-grid-columns();
+
+
+/* Extra small screens
+ *
+ * Smartphones
+ */
+@media (min-width: $bp-xs-screen) {
+    @include calc-grid-column (xs, $grid-columns);
+}
+
+/* Small screens
+ *
+ * Tablets
+ */
+@media (min-width: $bp-sm-screen) {
+    @include calc-grid-column (sm, $grid-columns);
+
+    /* On nested grids avoid */
+    [class*="col-"] {
+
+
+    }
+}
+
+/* Media screens
+ *
+ * Desktop
+ */
+@media (min-width: $bp-md-screen) {
+    @include calc-grid-column (md, $grid-columns);
+}
+
+/* Large screens
+ *
+ * Large desktop
+ */
+@media (min-width: $bp-lg-screen) {
+    @include calc-grid-column (lg, $grid-columns);
+}
+
+
+
+/** Viewport bugfix for IE10 on Windows 8 & W8 Phone (< update 3) **/
+
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }

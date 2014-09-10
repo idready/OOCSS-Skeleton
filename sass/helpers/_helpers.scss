@@ -14,7 +14,6 @@
  * %clearfix is a Silent version for clearfix ; source: http://zerosixthree.se/8-sass-mixins-you-must-have-in-your-toolbox
  */
 
-.clearfix,
 %clearfix {
 
   *zoom: 1; /* Hack IE7 */
@@ -66,6 +65,23 @@
   position: absolute;
 }
 
+
+/** VERTICAL ALIGN **/
+
+/** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
+/** Vertically center an element wihtout knowing its dimensions **/
+
+%ghostVerticalAlign {
+
+  &:before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%; width: .1px;
+  }
+}
+
+
 /** Source : http://hackingui.com/front-end/10-best-scss-utilities/ **/
 /** Display Currency dependy on country (parent class); you can add up your own **/
 
@@ -101,10 +117,10 @@
 
 %commonButtonsProp {
 
-    cursor: pointer;
-    display: inline-block;
-    *display: inline; /* Hack IE7 */
-    zoom: 1;
+  cursor: pointer;
+  display: inline-block;
+  *display: inline; /* Hack IE7 */
+  zoom: 1;
 }
 
 
