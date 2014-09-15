@@ -16,24 +16,6 @@
  * NB: When making css for columns, never ever define margin, padding or container width.
  */
 
-/*** Variables for grid ***/
-
-$grid-columns: 12 !default;
-$grid-gutter: 20px !default;
-// $grid-one-col: (100% - ($grid-gutter * ($grid-columns - 1))) / $grid-columns !default;
-$grid-one-col: (100 / $grid-columns) * 1% !default;
-
-$grid-row-min-height: 1px !default;
-
-// Max width
-$max-screen-width: rem(1400px) !default;
-
-// Breakpoints:
-
-$bp-xs-screen: rem(480px) !default;
-$bp-sm-screen: rem(768px) !default;
-$bp-md-screen: rem(1024px) !default;
-$bp-lg-screen: rem(1200px) !default;
 
 /*** Mixins for grid ***/
 
@@ -106,7 +88,7 @@ $bp-lg-screen: rem(1200px) !default;
  *
  * Smartphones
  */
-@media (min-width: $bp-xs-screen) {
+@media (min-width: rem($bp-xs-screen)) {
     @include calc-grid-column (xs, $grid-columns);
 }
 
@@ -114,7 +96,7 @@ $bp-lg-screen: rem(1200px) !default;
  *
  * Tablets
  */
-@media (min-width: $bp-sm-screen) {
+@media (min-width: rem($bp-sm-screen)) {
     @include calc-grid-column (sm, $grid-columns);
 
     /* On nested grids avoid */
@@ -128,7 +110,7 @@ $bp-lg-screen: rem(1200px) !default;
  *
  * Desktop
  */
-@media (min-width: $bp-md-screen) {
+@media (min-width: rem($bp-md-screen)) {
     @include calc-grid-column (md, $grid-columns);
 }
 
@@ -136,7 +118,7 @@ $bp-lg-screen: rem(1200px) !default;
  *
  * Large desktop
  */
-@media (min-width: $bp-lg-screen) {
+@media (min-width: rem($bp-lg-screen)) {
     @include calc-grid-column (lg, $grid-columns);
 }
 

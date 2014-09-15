@@ -60,7 +60,7 @@ $grid-row-min-height: 1px !default;
 $max-screen-width: rem(1400px) !default;
 
 // Breakpoints
-$bp-xs-screen: rem(480px) !default;
-$bp-sm-screen: rem(768px) !default;
-$bp-md-screen: rem(1024px) !default;
-$bp-lg-screen: rem(1200px) !default;
+$bp-xs-screen: 480px !default;
+$bp-sm-screen: 768px !default;
+$bp-md-screen: 1024px !default;
+$bp-lg-screen: 1200px !default;
