@@ -19,10 +19,6 @@
 
 /** http://gregrickaby.com/using-the-golden-ratio-and-rems/ **/
 
-// Set your root font-size here
-$root-font-size: 16;
-$base-line-height: 28;
-
 /* Functions used for the mixin */
 
 @function parseInt($n) {
@@ -31,7 +27,7 @@ $base-line-height: 28;
 
 @function rem($value) {
 
-  $root: $root-font-size;
+  $root: parseInt($base-font-size);
   $val: parseInt($value);
   $return: ();
 
@@ -51,7 +47,7 @@ $base-line-height: 28;
   $px : ();
   $rem: ();
 
-  $root: $root-font-size;
+  $root: $base-font-size;
 
   @each $value in $values {
     @if $value == 0 or $value == auto {
