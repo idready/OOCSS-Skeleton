@@ -16,13 +16,6 @@ $base-font-family: sans-serif !default;
 $base-font-size: 16 !default;
 $base-line-height: 28 !default;
 
-// $mobile-res: 320;
-// $tablet-res: 768;
-// $desktop-res: 1024;
-// $large-desktop-res: 1260;
-
-// $total-col: 12 !default;
-
 
 /*------------------------------------*\
     $COLORS
@@ -37,8 +30,8 @@ $black: black;
     $ANIMATIONS
 \*------------------------------------*/
 
-$duration: .5s; // default 1s
-$delay: 0s;   // default 0.2s
+$duration: .3s;
+$delay: 0s;
 $function: ease;
 $fill: both;
 $visibility: hidden;
