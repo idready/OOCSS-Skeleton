@@ -12,39 +12,6 @@
     http://viget.com/inspire/building-a-nested-responsive-grid-with-sass-compass
 ========================================================================== */
 
-/*
- * NB: When making css for columns, never ever define margin, padding or container width.
- */
-
-
-/*** Mixins for grid ***/
-
-@mixin make-grid-columns($i: 1, $list: ".col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}") {
-  @for $i from (1 + 1) through $grid-columns {
-    $list: "#{$list}, .col-xs-#{$i}, .col-sm-#{$i}, .col-md-#{$i}, .col-lg-#{$i}";
-  }
-  #{$list} {
-    float: left;
-    // Prevent columns from collapsing when empty
-    min-height: 1px;
-    padding-left:  rem($grid-gutter / 2);
-    padding-right: rem($grid-gutter / 2);
-    position: relative;
-
-  }
-
-}
-
-@mixin calc-grid-column ($screen-type, $columns: 12) {
-
-    @for $i from 1 through $columns {
-
-        .col-#{$screen-type}-#{$i} {
-            width: ($grid-one-col * $i);
-        }
-    }
-}
-
 
 /*** 12 Columns Grid ***/
 
