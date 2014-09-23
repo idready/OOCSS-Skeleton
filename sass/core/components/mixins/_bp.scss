@@ -4,10 +4,29 @@
 * Define breakpoints mixin
 **/
 
-/** @TODO: add simpl and mor usable breapoint mixin: https://medium.com/developing-with-sass/refactoring-my-simple-sass-breakpoint-mixin-71205dd6badd **/
+/** @TODO: add simple and mor usable breapoint mixin: https://medium.com/developing-with-sass/refactoring-my-simple-sass-breakpoint-mixin-71205dd6badd **/
+
 
 /** MEDIA QUERIES MIXINS **/
-/** Used for default breakpoint and more; breakpoint are converted to em too **/
+
+$xs: ( max:  $bp-xs-screen );
+$sm: ( min:  $bp-sm-screen );
+$md: ( min:  $bp-md-screen );
+$lg: ( min:  $bp-lg-screen );
+
+$sm-only: ( min: map-get($sm, min), max: map-get($md, min) - 1 );
+$md-only: ( min: map-get($md, min), max: map-get($lg, min) - 1 );
+
+@mixin breakpoint($map) {
+  $query: "";
+  @if map-has-key($map, min) { $query: append($query, "(min-width: #{map-get($map, min)})") }
+  @if map-has-key($map, min) and map-has-key($map, max) { $query: append($query, "and") }
+  @if map-has-key($map, max) { $query: append($query, "(max-width: #{map-get($map, max)})") }
+  @media screen and #{$query} { @content; }
+}
+
+/* OLD BAD WAY */
+/** Used for default breakpoint and more; breakpoint are converted to em too **
 
 @mixin bp ($bpoint, $default : true, $caseMin: 0, $caseMax: 0, $caseMinMax: ($minValue, $maxValue)) {
 
@@ -70,3 +89,5 @@
 
 
 }
+
+*/
